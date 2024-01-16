@@ -1,0 +1,501 @@
+<html>
+
+<head>
+    <style>
+        .flex-grid {
+            display: flex;
+            justify-content: center;
+            max-height: 100px;
+        }
+
+        .col1 {
+            flex: 1;
+        }
+
+        .col2 {
+            flex: 1;
+        }
+
+        .col3 {
+            flex: 1;
+        }
+
+        .col4 {
+            flex: 1;
+        }
+
+        #flex2 {
+            display: flex;
+            justify-content: space-evenly;
+            max-height: 100px;
+        }
+
+        #flex3 {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .col5 {
+            flex: 1;
+        }
+
+        .col6 {
+            flex: 1;
+        }
+
+        .col7 {
+            flex: 1;
+        }
+
+        .col8 {
+            flex: 1;
+        }
+
+        .col9 {
+            flex: 1;
+        }
+
+        .col10 {
+            flex: 1;
+        }
+
+        #playerDisplay {
+            font-size: x-large;
+
+        }
+
+        #botDisplay {
+            font-size: x-large;
+
+        }
+
+        #check1 {
+            padding:
+        }
+    </style>
+</head>
+
+<body>
+    <button id="rollButton" onclick="rollDie()">Click to roll dice</button>
+    <div class="flex-grid">
+
+
+        <div class="col1">Die 1<img src="die.jpg" id="def1" length="100px" width="100px"></div>
+        <div class="col2">Die 2<img src="die.jpg" id="def2" length="100px" width="100px"></div>
+        <div class="col3">Die 3<img src="die.jpg" id="def3" length="100px" width="100px"></div>
+        <div class="col4">Die 4<img src="die.jpg" id="def4" length="100px" width="100px"></div>
+        <div class="col5">Die 5<img src="die.jpg" id="def5" length="100px" width="100px"></div>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="playerDisplay">Player roll:</div>
+    <div class="flex-grid" id="flex2">
+        <div class="col6"> Die 1<img src="die.jpg" id="botdef1" length="100px" width="100px"></div>
+        <div class="col7"> Die 2<img src="die.jpg" id="botdef2" length="100px" width="100px"></div>
+        <div class="col8">Die 3<img src="die.jpg" id="botdef3" length="100px" width="100px"></div>
+        <div class="col9">Die 4<img src="die.jpg" id="botdef4" length="100px" width="100px"></div>
+        <div class="col10">Die 5<img src="die.jpg" id="botdef5" length="100px" width="100px"></div>
+    </div>
+
+    <div class="flex-grid" id="flex3">
+        <div class="container"></div>
+        <input type="checkbox" id="check1">
+    </div>
+    <div class="container">
+        <input type="checkbox" id="check2">
+    </div>
+    <div class="container">
+        <input type="checkbox" id="check3">
+    </div>
+    <div class="container">
+        <input type="checkbox" id="check4">
+    </div>
+    <div class="container">
+        <input type="checkbox" id="check5">
+    </div>
+    </div>
+    <br>
+    <br>
+    <div id="botDisplay"> Bot Roll: </div>
+    <br>
+    <br>
+    <div class="container" id="winner-display">Winner is: </div>
+
+
+
+
+    <script>
+        var firstroll;
+        var secondroll;
+        var thirdroll;
+        var fourthroll;
+        var fifthroll;
+        var botfirstroll;
+        var botsecondroll;
+        var botthirdroll;
+        var botfourthroll;
+        var botfifthroll;
+        var playerroll;
+        var botroll;
+        var lastPlayerRoll1;
+        var lastPlayerRoll2;
+        var lastPlayerRoll3;
+        var lastPlayerRoll4;
+        var lastPlayerRoll5;
+        var lastBotRoll1;
+        var lastBotRoll2;
+        var lastBotRoll3;
+        var lastBotRoll4;
+        var lastBotRoll5;
+
+        var checkbox1 = document.getElementById("check1");
+        var checkbox2 = document.getElementById("check2");
+        var checkbox3 = document.getElementById("check3");
+        var checkbox4 = document.getElementById("check4");
+        var checkbox5 = document.getElementById("check5");
+        var checkbox6 = document.getElementById("check6");
+
+        function rollDie() {
+
+            lastPlayerRoll1 = firstroll;
+            lastPlayerRoll2 = secondroll;
+            lastPlayerRoll3 = thirdroll;
+            lastPlayerRoll4 = fourthroll;
+            lastPlayerRoll5 = fifthroll;
+            lastBotRoll1 = botfirstroll;
+            lastBotRoll2 = botsecondroll;
+            lastBotRoll3 = botthirdroll;
+            lastBotRoll4 = botfourthroll;
+            lastBotRoll5 = botfifthroll;
+
+            firstroll = Math.floor((Math.random() * 6) + 1);
+            secondroll = Math.floor((Math.random() * 6) + 1);
+            thirdroll = Math.floor((Math.random() * 6) + 1);
+            fourthroll = Math.floor((Math.random() * 6) + 1);
+            fifthroll = Math.floor((Math.random() * 6) + 1);
+            botfirstroll = Math.floor((Math.random() * 6) + 1);
+            botsecondroll = Math.floor((Math.random() * 6) + 1);
+            botthirdroll = Math.floor((Math.random() * 6) + 1);
+            botfourthroll = Math.floor((Math.random() * 6) + 1);
+            botfifthroll = Math.floor((Math.random() * 6) + 1);
+
+            if (checkbox1 == true) {
+                firstroll = lastPlayerRoll1;
+                //minus += lastPlayerRoll1;
+            }
+            if (checkbox2 == true) {
+                secondroll = lastPlayerRoll2;
+                //minus += lastPlayerRoll1;
+            }
+            if (checkbox3 == true) {
+                thirdroll = lastPlayerRoll3;
+                //minus += lastPlayerRoll1;
+            }
+            if (checkbox4 == true) {
+                fourthroll = lastPlayerRoll4;
+                //minus += lastPlayerRoll1;
+            }
+            if (checkbox5 == true) {
+                fifthroll = lastPlayerRoll5;
+                //minus += lastPlayerRoll1;
+            }
+
+
+            playerroll = firstroll + secondroll + thirdroll + fourthroll + fifthroll;
+            botroll = botfirstroll + botsecondroll + botthirdroll + botfourthroll + botfifthroll;
+
+
+
+            document.getElementById("playerDisplay").innerHTML = "Player Roll:" + playerroll;
+            document.getElementById("botDisplay").innerHTML = "Bot Roll:" + botroll;
+
+            if (firstroll == 1) {
+
+                document.getElementById("def1").src = "one.jpg"
+            }
+            if (firstroll == 2) {
+
+                document.getElementById("def1").src = "two.jpg"
+            }
+            if (firstroll == 3) {
+
+                document.getElementById("def1").src = "three.jpg"
+            }
+            if (firstroll == 4) {
+
+                document.getElementById("def1").src = "four.jpg"
+            }
+            if (firstroll == 5) {
+
+                document.getElementById("def1").src = "five.jpg"
+            }
+            if (firstroll == 6) {
+
+                document.getElementById("def1").src = "six.jpg"
+            }
+
+            if (secondroll == 1) {
+
+                document.getElementById("def2").src = "one.jpg"
+            }
+            if (secondroll == 2) {
+
+                document.getElementById("def2").src = "two.jpg"
+            }
+            if (secondroll == 3) {
+
+                document.getElementById("def2").src = "three.jpg"
+            }
+            if (secondroll == 4) {
+
+                document.getElementById("def2").src = "four.jpg"
+            }
+            if (secondroll == 5) {
+
+                document.getElementById("def2").src = "five.jpg"
+            }
+            if (secondroll == 6) {
+
+                document.getElementById("def2").src = "six.jpg"
+            }
+
+
+
+            if (thirdroll == 1) {
+
+                document.getElementById("def3").src = "one.jpg"
+            }
+            if (thirdroll == 2) {
+
+                document.getElementById("def3").src = "two.jpg"
+            }
+            if (thirdroll == 3) {
+
+                document.getElementById("def3").src = "three.jpg"
+            }
+            if (thirdroll == 4) {
+
+                document.getElementById("def3").src = "four.jpg"
+            }
+            if (thirdroll == 5) {
+
+                document.getElementById("def3").src = "five.jpg"
+            }
+            if (thirdroll == 6) {
+
+                document.getElementById("def3").src = "six.jpg"
+            }
+
+
+
+
+            if (fourthroll == 1) {
+
+                document.getElementById("def4").src = "one.jpg"
+            }
+            if (fourthroll == 2) {
+
+                document.getElementById("def4").src = "two.jpg"
+            }
+            if (fourthroll == 3) {
+
+                document.getElementById("def4").src = "three.jpg"
+            }
+            if (fourthroll == 4) {
+
+                document.getElementById("def4").src = "four.jpg"
+            }
+            if (fourthroll == 5) {
+
+                document.getElementById("def4").src = "five.jpg"
+            }
+            if (fourthroll == 6) {
+
+                document.getElementById("def4").src = "six.jpg"
+            }
+
+
+
+
+            if (fifthroll == 1) {
+
+                document.getElementById("def5").src = "one.jpg"
+            }
+            if (fifthroll == 2) {
+
+                document.getElementById("def5").src = "two.jpg"
+            }
+            if (fifthroll == 3) {
+
+                document.getElementById("def5").src = "three.jpg"
+            }
+            if (fifthroll == 4) {
+
+                document.getElementById("def5").src = "four.jpg"
+            }
+            if (fifthroll == 5) {
+
+                document.getElementById("def5").src = "five.jpg"
+            }
+            if (fifthroll == 6) {
+
+                document.getElementById("def5").src = "six.jpg"
+            }
+
+
+
+
+
+
+            //BOT PICTURES
+            if (botfirstroll == 1) {
+
+                document.getElementById("botdef1").src = "one.jpg"
+            }
+            if (botfirstroll == 2) {
+
+                document.getElementById("botdef1").src = "two.jpg"
+            }
+            if (botfirstroll == 3) {
+
+                document.getElementById("botdef1").src = "three.jpg"
+            }
+            if (botfirstroll == 4) {
+
+                document.getElementById("botdef1").src = "four.jpg"
+            }
+            if (botfirstroll == 5) {
+
+                document.getElementById("botdef1").src = "five.jpg"
+            }
+            if (botfirstroll == 6) {
+
+                document.getElementById("botdef1").src = "six.jpg"
+            }
+
+
+
+
+            if (botsecondroll == 1) {
+
+                document.getElementById("botdef2").src = "one.jpg"
+            }
+            if (botsecondroll == 2) {
+
+                document.getElementById("botdef2").src = "two.jpg"
+            }
+            if (botsecondroll == 3) {
+
+                document.getElementById("botdef2").src = "three.jpg"
+            }
+            if (botsecondroll == 4) {
+
+                document.getElementById("botdef2").src = "four.jpg"
+            }
+            if (botsecondroll == 5) {
+
+                document.getElementById("botdef2").src = "five.jpg"
+            }
+            if (botsecondroll == 6) {
+
+                document.getElementById("botdef2").src = "six.jpg"
+            }
+
+
+
+            if (botthirdroll == 1) {
+
+                document.getElementById("botdef3").src = "one.jpg"
+            }
+            if (botthirdroll == 2) {
+
+                document.getElementById("botdef3").src = "two.jpg"
+            }
+            if (botthirdroll == 3) {
+
+                document.getElementById("botdef3").src = "three.jpg"
+            }
+            if (botthirdroll == 4) {
+
+                document.getElementById("botdef3").src = "four.jpg"
+            }
+            if (botthirdroll == 5) {
+
+                document.getElementById("botdef3").src = "five.jpg"
+            }
+            if (botthirdroll == 6) {
+
+                document.getElementById("botdef3").src = "six.jpg"
+            }
+
+
+
+
+            if (botfourthroll == 1) {
+
+                document.getElementById("botdef4").src = "one.jpg"
+            }
+            if (botfourthroll == 2) {
+
+                document.getElementById("botdef4").src = "two.jpg"
+            }
+            if (botfourthroll == 3) {
+
+                document.getElementById("botdef4").src = "three.jpg"
+            }
+            if (botfourthroll == 4) {
+
+                document.getElementById("botdef4").src = "four.jpg"
+            }
+            if (botfourthroll == 5) {
+
+                document.getElementById("botdef4").src = "five.jpg"
+            }
+            if (botfourthroll == 6) {
+
+                document.getElementById("botdef4").src = "six.jpg"
+            }
+
+
+
+
+            if (botfifthroll == 1) {
+
+                document.getElementById("botdef5").src = "one.jpg"
+            }
+            if (botfifthroll == 2) {
+
+                document.getElementById("botdef5").src = "two.jpg"
+            }
+            if (botfifthroll == 3) {
+
+                document.getElementById("botdef5").src = "three.jpg"
+            }
+            if (botfifthroll == 4) {
+
+                document.getElementById("botdef5").src = "four.jpg"
+            }
+            if (botfifthroll == 5) {
+
+                document.getElementById("botdef5").src = "five.jpg"
+            }
+            if (botfifthroll == 6) {
+
+                document.getElementById("botdef5").src = "six.jpg"
+            }
+        }
+
+        if (playerroll === 21) {
+
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>

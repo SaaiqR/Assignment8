@@ -2,6 +2,20 @@
 
 <head>
     <style>
+         html {
+            background-color: rgb(82, 17, 136);
+            color:whitesmoke;
+            text-align: center;
+        }
+
+        #rollButton {
+            width: 250px;
+            height: 35px;
+            font-size: large;
+            margin: 50px
+           
+        }
+
         .flex-grid {
             display: flex;
             justify-content: center;
@@ -68,10 +82,53 @@
             font-size: x-large;
 
         }
-
-        #check1 {
-            padding:
+        .container{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            
         }
+        #player-wins, #bot-wins{
+            padding: 50px;
+            font-size: 1.5rem;
+            width: 100px;
+            height:35px;
+            background-color: whitesmoke;
+            color: black;
+            border-radius: 15px;
+            margin: 50px;
+            text-align: center;
+        }
+
+        #winner-display{
+            font-size: 50px;
+        }
+        #reset-button {
+            width: 350px;
+            height: 80px;
+            font-size: 2rem;
+            background: transparent;
+            color: #fff;
+            border: solid 2px #fff;
+            border-radius: 5px;
+            padding: 5px;
+            box-shadow: 0 0 3px black;
+            transition: .5s;
+            display: none;
+
+        }
+        #reset-button:hover {
+            background-color: #fff;
+            color: black;
+        }
+        .reset-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
     </style>
 </head>
 
@@ -80,52 +137,46 @@
     <div class="flex-grid">
 
 
-        <div class="col1">Die 1<img src="die.jpg" id="def1" length="100px" width="100px"></div>
-        <div class="col2">Die 2<img src="die.jpg" id="def2" length="100px" width="100px"></div>
-        <div class="col3">Die 3<img src="die.jpg" id="def3" length="100px" width="100px"></div>
-        <div class="col4">Die 4<img src="die.jpg" id="def4" length="100px" width="100px"></div>
-        <div class="col5">Die 5<img src="die.jpg" id="def5" length="100px" width="100px"></div>
+        <div class="col1">Die 1<input type="checkbox" id="check1"><img src="die.jpg" id="def1" length="100px" width="100px"></div>
+        <div class="col2">Die 2<input type="checkbox" id="check2"><img src="die.jpg" id="def2" length="100px" width="100px"></div>
+        <div class="col3">Die 3<input type="checkbox" id="check3"><img src="die.jpg" id="def3" length="100px" width="100px"></div>
+        <div class="col4">Die 4<input type="checkbox" id="check4"><img src="die.jpg" id="def4" length="100px" width="100px"></div>
+        <div class="col5">Die 5<input type="checkbox" id="check5"><img src="die.jpg" id="def5" length="100px" width="100px"></div>
 
     </div>
-    <br>
-    <br>
     <br>
     <br>
     <div id="playerDisplay">Player roll:</div>
+    <br>
+    <br>
+ 
     <div class="flex-grid" id="flex2">
-        <div class="col6"> Die 1<img src="die.jpg" id="botdef1" length="100px" width="100px"></div>
-        <div class="col7"> Die 2<img src="die.jpg" id="botdef2" length="100px" width="100px"></div>
-        <div class="col8">Die 3<img src="die.jpg" id="botdef3" length="100px" width="100px"></div>
-        <div class="col9">Die 4<img src="die.jpg" id="botdef4" length="100px" width="100px"></div>
-        <div class="col10">Die 5<img src="die.jpg" id="botdef5" length="100px" width="100px"></div>
-    </div>
-
-    <div class="flex-grid" id="flex3">
-        <div class="container"></div>
-        <input type="checkbox" id="check1">
-    </div>
-    <div class="container">
-        <input type="checkbox" id="check2">
-    </div>
-    <div class="container">
-        <input type="checkbox" id="check3">
-    </div>
-    <div class="container">
-        <input type="checkbox" id="check4">
-    </div>
-    <div class="container">
-        <input type="checkbox" id="check5">
-    </div>
+        <div class="col6">Die 1<input type="checkbox" id="check6"><img src="die.jpg" id="botdef1" length="100px" width="100px"></div>
+        <div class="col7">Die 2<input type="checkbox" id="check7"><img src="die.jpg" id="botdef2" length="100px" width="100px"></div>
+        <div class="col8">Die 3<input type="checkbox" id="check8"><img src="die.jpg" id="botdef3" length="100px" width="100px"></div>
+        <div class="col9">Die 4<input type="checkbox" id="check9"><img src="die.jpg" id="botdef4" length="100px" width="100px"></div>
+        <div class="col10">Die 5<input type="checkbox" id="check10"><img src="die.jpg" id="botdef5" length="100px" width="100px"></div>
     </div>
     <br>
     <br>
     <div id="botDisplay"> Bot Roll: </div>
     <br>
     <br>
-    <div class="container" id="winner-display">Winner is: </div>
 
-
-
+    <div class="container">
+        <div id="winner-display"> </div>
+    </div>
+    <br>
+    <div id="trashTalkMessages"></div>
+    <div class="container">
+        <div id="player-wins">Player: </div>
+        <br>
+        <div id="bot-wins">Bot: </div>
+    </div>
+    <div class="reset-container">
+        <button id="reset-button" onclick="playAgain()">Reset</button>
+    </div>
+    
 
     <script>
         var firstroll;
@@ -140,16 +191,11 @@
         var botfifthroll;
         var playerroll;
         var botroll;
-        var lastPlayerRoll1;
-        var lastPlayerRoll2;
-        var lastPlayerRoll3;
-        var lastPlayerRoll4;
-        var lastPlayerRoll5;
-        var lastBotRoll1;
-        var lastBotRoll2;
-        var lastBotRoll3;
-        var lastBotRoll4;
-        var lastBotRoll5;
+       
+        var playerwins = 0;
+        var botwins = 0;
+
+        const dieArray1 = [];
 
         var checkbox1 = document.getElementById("check1");
         var checkbox2 = document.getElementById("check2");
@@ -157,60 +203,93 @@
         var checkbox4 = document.getElementById("check4");
         var checkbox5 = document.getElementById("check5");
         var checkbox6 = document.getElementById("check6");
+        var checkbox7 = document.getElementById("check7");
+        var checkbox8 = document.getElementById("check8");
+        var checkbox9 = document.getElementById("check9");
+        var checkbox10 = document.getElementById("check10");
+
+        var resetButton = document.getElementById("reset-button");
 
         function rollDie() {
 
-            lastPlayerRoll1 = firstroll;
-            lastPlayerRoll2 = secondroll;
-            lastPlayerRoll3 = thirdroll;
-            lastPlayerRoll4 = fourthroll;
-            lastPlayerRoll5 = fifthroll;
-            lastBotRoll1 = botfirstroll;
-            lastBotRoll2 = botsecondroll;
-            lastBotRoll3 = botthirdroll;
-            lastBotRoll4 = botfourthroll;
-            lastBotRoll5 = botfifthroll;
-
+           if(!checkbox1.checked){
             firstroll = Math.floor((Math.random() * 6) + 1);
+           };
+           if(!checkbox2.checked){
             secondroll = Math.floor((Math.random() * 6) + 1);
+           };
+           if(!checkbox3.checked){
             thirdroll = Math.floor((Math.random() * 6) + 1);
+           };
+           if(!checkbox4.checked){
             fourthroll = Math.floor((Math.random() * 6) + 1);
+           };
+           if(!checkbox5.checked){
             fifthroll = Math.floor((Math.random() * 6) + 1);
+           };
+           if(!checkbox6.checked){
             botfirstroll = Math.floor((Math.random() * 6) + 1);
+           };
+           if(!checkbox7.checked){
             botsecondroll = Math.floor((Math.random() * 6) + 1);
+           };
+           if(!checkbox8.checked){
             botthirdroll = Math.floor((Math.random() * 6) + 1);
+           };
+           if(!checkbox9.checked){
             botfourthroll = Math.floor((Math.random() * 6) + 1);
+           };
+           if(!checkbox10.checked){
             botfifthroll = Math.floor((Math.random() * 6) + 1);
-
-            if (checkbox1 == true) {
-                firstroll = lastPlayerRoll1;
-                //minus += lastPlayerRoll1;
-            }
-            if (checkbox2 == true) {
-                secondroll = lastPlayerRoll2;
-                //minus += lastPlayerRoll1;
-            }
-            if (checkbox3 == true) {
-                thirdroll = lastPlayerRoll3;
-                //minus += lastPlayerRoll1;
-            }
-            if (checkbox4 == true) {
-                fourthroll = lastPlayerRoll4;
-                //minus += lastPlayerRoll1;
-            }
-            if (checkbox5 == true) {
-                fifthroll = lastPlayerRoll5;
-                //minus += lastPlayerRoll1;
-            }
-
-
+           };
+ 
             playerroll = firstroll + secondroll + thirdroll + fourthroll + fifthroll;
             botroll = botfirstroll + botsecondroll + botthirdroll + botfourthroll + botfifthroll;
 
 
 
-            document.getElementById("playerDisplay").innerHTML = "Player Roll:" + playerroll;
+
+            document.getElementById("playerDisplay").innerHTML = "Player Roll:"+ playerroll;
             document.getElementById("botDisplay").innerHTML = "Bot Roll:" + botroll;
+
+//WINNER FUNCTIONS
+            if (playerroll == 21) {
+            document.getElementById("winner-display").innerHTML = "You Win!"
+            playerwins++;
+            document.getElementById("player-wins").innerHTML = "Player: " + playerwins;
+            checkbox1.disabled=true;
+            checkbox2.disabled=true;
+            checkbox3.disabled=true;
+            checkbox4.disabled=true;
+            checkbox5.disabled=true;
+            checkbox6.disabled=true;
+            checkbox7.disabled=true;
+            checkbox8.disabled=true;
+            checkbox9.disabled=true;
+            checkbox10.disabled=true;
+            document.getElementById("rollButton").disabled=true;
+            resetButton.style.display = "block";
+        }
+        
+        if (botroll == 21) {
+            document.getElementById("winner-display").innerHTML = "You lose :("
+            botwins++;
+            document.getElementById("bot-wins").innerHTML = "Bot: " + botwins;
+            checkbox1.disabled=true;
+            checkbox2.disabled=true;
+            checkbox3.disabled=true;
+            checkbox4.disabled=true;
+            checkbox5.disabled=true;
+            checkbox6.disabled=true;
+            checkbox7.disabled=true;
+            checkbox8.disabled=true;
+            checkbox9.disabled=true;
+            checkbox10.disabled=true;
+            document.getElementById("rollButton").disabled=true;
+            resetButton.style.display = "block";
+        }
+
+
 
             if (firstroll == 1) {
 
@@ -486,11 +565,44 @@
 
                 document.getElementById("botdef5").src = "six.jpg"
             }
+            if(botwins-playerwins>=3){
+document.getElementById("trashTalkMessages").innerHTML="Wow! Your getting smoked!"
+            }
+            if(playerwins-botwins>=3){
+document.getElementById("trashTalkMessages").innerHTML="Wow! Your Really Good!"
+            }
+            
+           
         }
+    function   playAgain(){
+        checkbox1.checked=false;
+            checkbox2.checked=false;
+            checkbox3.checked=false;
+            checkbox4.checked=false;
+            checkbox5.checked=false;
+            checkbox6.checked=false;
+            checkbox7.checked=false;
+            checkbox8.checked=false;
+            checkbox9.checked=false;
+            checkbox10.checked=false;
 
-        if (playerroll === 21) {
-
+        checkbox1.disabled=false;
+            checkbox2.disabled=false;
+            checkbox3.disabled=false;
+            checkbox4.disabled=false;
+            checkbox5.disabled=false;
+            checkbox6.disabled=false;
+            checkbox7.disabled=false;
+            checkbox8.disabled=false;
+            checkbox9.disabled=false;
+            checkbox10.disabled=false;
+            document.getElementById("rollButton").disabled=false;
+            document.getElementById("winner-display").innerHTML = ""
+            document.getElementById("playerDisplay").innerHTML = "Player roll: "
+            document.getElementById("botDisplay").innerHTML = "Bot roll: "
+            document.getElementById("trashTalkMessages").innerHTML=""
         }
+      
     </script>
 
 

@@ -126,13 +126,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
 
+        }
+#heading{
+    font-size:70;
+}
 
     </style>
 </head>
 
 <body>
+    <h1 id="heading">ROLL 21</h1>
     <button id="rollButton" onclick="rollDie()">Click to roll dice</button>
     <div class="flex-grid">
 
@@ -151,11 +155,11 @@
     <br>
  
     <div class="flex-grid" id="flex2">
-        <div class="col6">Die 1<input type="checkbox" id="check6"><img src="die.jpg" id="botdef1" length="100px" width="100px"></div>
-        <div class="col7">Die 2<input type="checkbox" id="check7"><img src="die.jpg" id="botdef2" length="100px" width="100px"></div>
-        <div class="col8">Die 3<input type="checkbox" id="check8"><img src="die.jpg" id="botdef3" length="100px" width="100px"></div>
-        <div class="col9">Die 4<input type="checkbox" id="check9"><img src="die.jpg" id="botdef4" length="100px" width="100px"></div>
-        <div class="col10">Die 5<input type="checkbox" id="check10"><img src="die.jpg" id="botdef5" length="100px" width="100px"></div>
+        <div class="col6">Die 1<input type="checkbox" id="check6" disabled="true"><img src="die.jpg" id="botdef1" length="100px" width="100px"></div>
+        <div class="col7">Die 2<input type="checkbox" id="check7"disabled="true"><img src="die.jpg" id="botdef2" length="100px" width="100px"></div>
+        <div class="col8">Die 3<input type="checkbox" id="check8"disabled="true"><img src="die.jpg" id="botdef3" length="100px" width="100px"></div>
+        <div class="col9">Die 4<input type="checkbox" id="check9"disabled="true"><img src="die.jpg" id="botdef4" length="100px" width="100px"></div>
+        <div class="col10">Die 5<input type="checkbox" id="check10"disabled="true"><img src="die.jpg" id="botdef5" length="100px" width="100px"></div>
     </div>
     <br>
     <br>
@@ -191,6 +195,7 @@
         var botfifthroll;
         var playerroll;
         var botroll;
+        var sixrolls=0;
        
         var playerwins = 0;
         var botwins = 0;
@@ -452,7 +457,11 @@
             }
             if (botfirstroll == 6) {
 
-                document.getElementById("botdef1").src = "six.jpg"
+                document.getElementById("botdef1").src = "six.jpg";
+                sixrolls++;
+                if(sixrolls<=4){
+                    checkbox6.checked=true;
+                }
             }
 
 
@@ -480,7 +489,11 @@
             }
             if (botsecondroll == 6) {
 
-                document.getElementById("botdef2").src = "six.jpg"
+                document.getElementById("botdef2").src = "six.jpg";
+                sixrolls++;
+                if(sixrolls<=4){
+                    checkbox7.checked=true;
+                }
             }
 
 
@@ -507,7 +520,11 @@
             }
             if (botthirdroll == 6) {
 
-                document.getElementById("botdef3").src = "six.jpg"
+                document.getElementById("botdef3").src = "six.jpg";
+                sixrolls++;
+                if(sixrolls<=4){
+                    checkbox8.checked=true;
+                }
             }
 
 
@@ -535,7 +552,11 @@
             }
             if (botfourthroll == 6) {
 
-                document.getElementById("botdef4").src = "six.jpg"
+                document.getElementById("botdef4").src = "six.jpg";
+                sixrolls++;
+                if(sixrolls<=4){
+                    checkbox9.checked=true;
+                }
             }
 
 
@@ -563,7 +584,11 @@
             }
             if (botfifthroll == 6) {
 
-                document.getElementById("botdef5").src = "six.jpg"
+                document.getElementById("botdef5").src = "six.jpg";
+                sixrolls++;
+                if(sixrolls<=4){
+                    checkbox10.checked=true;
+                }
             }
             if(botwins-playerwins>=3){
 document.getElementById("trashTalkMessages").innerHTML="Wow! Your getting smoked!"
@@ -571,6 +596,11 @@ document.getElementById("trashTalkMessages").innerHTML="Wow! Your getting smoked
             if(playerwins-botwins>=3){
 document.getElementById("trashTalkMessages").innerHTML="Wow! Your Really Good!"
             }
+            checkbox6.disabled=true;
+            checkbox7.disabled=true;
+            checkbox8.disabled=true;
+            checkbox9.disabled=true;
+            checkbox10.disabled=true;
             
            
         }
@@ -591,16 +621,24 @@ document.getElementById("trashTalkMessages").innerHTML="Wow! Your Really Good!"
             checkbox3.disabled=false;
             checkbox4.disabled=false;
             checkbox5.disabled=false;
-            checkbox6.disabled=false;
-            checkbox7.disabled=false;
-            checkbox8.disabled=false;
-            checkbox9.disabled=false;
-            checkbox10.disabled=false;
+  
             document.getElementById("rollButton").disabled=false;
             document.getElementById("winner-display").innerHTML = ""
             document.getElementById("playerDisplay").innerHTML = "Player roll: "
             document.getElementById("botDisplay").innerHTML = "Bot roll: "
-            document.getElementById("trashTalkMessages").innerHTML=""
+            document.getElementById("trashTalkMessages").innerHTML="";
+         
+            document.getElementById("def1").src="die.jpg";
+          document.getElementById("def2").src="die.jpg";
+          document.getElementById("def3").src="die.jpg";
+          document.getElementById("def4").src="die.jpg";
+          document.getElementById("def5").src="die.jpg";
+          document.getElementById("botdef1").src="die.jpg";
+          document.getElementById("botdef2").src="die.jpg";
+          document.getElementById("botdef3").src="die.jpg";
+          document.getElementById("botdef4").src="die.jpg";
+          document.getElementById("botdef5").src="die.jpg";
+          sixrolls=0;
         }
       
     </script>
